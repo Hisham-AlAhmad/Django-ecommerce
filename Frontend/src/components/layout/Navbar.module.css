@@ -309,20 +309,20 @@
   position: fixed;
   inset: 0;
   background: rgba(28, 20, 16, 0.4);
-  z-index: 90;
+  z-index: 1200;
   backdrop-filter: blur(2px);
   animation: fadeIn 0.2s;
 }
 
 .mobileNav {
   position: fixed;
-  top: var(--nav-h);
+  top: 0;
   right: 0;
-  bottom: 0;
-  width: min(320px, 85vw);
+  height: 100dvh;
+  width: min(340px, 88vw);
   background: var(--cream);
-  z-index: 95;
-  padding: var(--s-6) var(--s-5);
+  z-index: 1210;
+  padding: calc(var(--nav-h) + var(--s-4)) var(--s-5) var(--s-6);
   display: flex;
   flex-direction: column;
   gap: var(--s-2);

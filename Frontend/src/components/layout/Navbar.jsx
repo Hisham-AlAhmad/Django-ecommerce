@@ -30,6 +30,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     await logout();
     setDropdownOpen(false);
+    setMenuOpen(false);
     navigate('/');
   };
 
@@ -56,9 +57,9 @@ export default function Navbar() {
           {/* Cart */}
           <Link to="/cart" className={styles.cartBtn} aria-label={`Cart, ${totalItems} items`}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 01-8 0"/>
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
             </svg>
             {totalItems > 0 && (
               <span className={styles.cartBadge} aria-hidden="true">{totalItems > 99 ? '99+' : totalItems}</span>
@@ -77,7 +78,7 @@ export default function Navbar() {
                 <span className={styles.avatar}>{user.first_name?.[0]?.toUpperCase()}</span>
                 <span className={styles.userName}>{user.first_name}</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <polyline points="6 9 12 15 18 9"/>
+                  <polyline points="6 9 12 15 18 9" />
                 </svg>
               </button>
               {dropdownOpen && (
@@ -85,16 +86,16 @@ export default function Navbar() {
                   <div className={styles.dropdownOverlay} onClick={() => setDropdownOpen(false)} />
                   <div className={styles.dropdown} role="menu">
                     <Link to="/account" role="menuitem" onClick={() => setDropdownOpen(false)}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
                       My Account
                     </Link>
                     <Link to="/account/orders" role="menuitem" onClick={() => setDropdownOpen(false)}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>
                       Orders
                     </Link>
                     <div className={styles.dropdownDivider} />
                     <button role="menuitem" onClick={handleLogout}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
                       Sign Out
                     </button>
                   </div>
