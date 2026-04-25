@@ -11,5 +11,12 @@ class CartItemInline(admin.TabularInline):
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
     list_display  = ['user', 'total_price', 'updated_at']
+    search_fields = ['user__email']
+    list_per_page = 25
     inlines       = [CartItemInline]
     readonly_fields = ['total_price']
+
+    class Media:
+        css = {
+            'all': ('admin/css/custom_admin.css',),
+        }

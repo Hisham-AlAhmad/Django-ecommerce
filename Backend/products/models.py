@@ -13,7 +13,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category    = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='products')
+    categories  = models.ManyToManyField(Category, related_name='products', blank=True)
     name        = models.CharField(max_length=255)
     slug        = models.SlugField(unique=True)
     description = models.TextField(blank=True)
@@ -29,3 +29,7 @@ class Product(models.Model):
     @property
     def in_stock(self):
         return self.stock > 0
+
+    @property
+    def primary_category(self):
+        return self.categories.first()

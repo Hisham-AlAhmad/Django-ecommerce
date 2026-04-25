@@ -126,27 +126,26 @@ class Command(BaseCommand):
             category_map[slug] = category
 
         products_payload = [
-            ("Orange Blast", "orange-blast", "fresh-juices", "Fresh orange juice with mint.", Decimal("3.50"), 70),
-            ("Tropical Mix", "tropical-mix", "fresh-juices", "Mango, pineapple, and passion fruit.", Decimal("4.25"), 55),
-            ("Berry Boost", "berry-boost", "fresh-juices", "Strawberry and blueberry energy blend.", Decimal("4.75"), 40),
-            ("Vanilla Cloud", "vanilla-cloud", "milkshakes", "Classic vanilla milkshake.", Decimal("5.00"), 35),
-            ("Choco Crunch", "choco-crunch", "milkshakes", "Chocolate shake with cocoa nibs.", Decimal("5.50"), 50),
-            ("Dates Smoothie", "dates-smoothie", "milkshakes", "Dates, milk, and cinnamon.", Decimal("5.25"), 44),
-            ("Cheesecake Jar", "cheesecake-jar", "desserts", "No-bake cheesecake with berry compote.", Decimal("6.50"), 24),
-            ("Lotus Dream", "lotus-dream", "desserts", "Lotus biscuit cream cup.", Decimal("6.25"), 29),
-            ("Fruit Trifle", "fruit-trifle", "desserts", "Layered fruit cream dessert.", Decimal("6.00"), 31),
-            ("Protein Bites", "protein-bites", "healthy-snacks", "Oats, peanut butter, and dates.", Decimal("3.00"), 90),
-            ("Granola Cup", "granola-cup", "healthy-snacks", "Yogurt with granola and berries.", Decimal("4.80"), 42),
-            ("Avocado Toast", "avocado-toast", "healthy-snacks", "Sourdough toast with avocado and seeds.", Decimal("4.95"), 33),
+            ("Orange Blast", "orange-blast", ["fresh-juices"], "Fresh orange juice with mint.", Decimal("3.50"), 70),
+            ("Tropical Mix", "tropical-mix", ["fresh-juices"], "Mango, pineapple, and passion fruit.", Decimal("4.25"), 55),
+            ("Berry Boost", "berry-boost", ["fresh-juices", "healthy-snacks"], "Strawberry and blueberry energy blend.", Decimal("4.75"), 40),
+            ("Vanilla Cloud", "vanilla-cloud", ["milkshakes"], "Classic vanilla milkshake.", Decimal("5.00"), 35),
+            ("Choco Crunch", "choco-crunch", ["milkshakes", "desserts"], "Chocolate shake with cocoa nibs.", Decimal("5.50"), 50),
+            ("Dates Smoothie", "dates-smoothie", ["milkshakes", "healthy-snacks"], "Dates, milk, and cinnamon.", Decimal("5.25"), 44),
+            ("Cheesecake Jar", "cheesecake-jar", ["desserts"], "No-bake cheesecake with berry compote.", Decimal("6.50"), 24),
+            ("Lotus Dream", "lotus-dream", ["desserts"], "Lotus biscuit cream cup.", Decimal("6.25"), 29),
+            ("Fruit Trifle", "fruit-trifle", ["desserts", "fresh-juices"], "Layered fruit cream dessert.", Decimal("6.00"), 31),
+            ("Protein Bites", "protein-bites", ["healthy-snacks"], "Oats, peanut butter, and dates.", Decimal("3.00"), 90),
+            ("Granola Cup", "granola-cup", ["healthy-snacks"], "Yogurt with granola and berries.", Decimal("4.80"), 42),
+            ("Avocado Toast", "avocado-toast", ["healthy-snacks"], "Sourdough toast with avocado and seeds.", Decimal("4.95"), 33),
         ]
 
         product_map = {}
-        for name, slug, category_slug, description, price, stock in products_payload:
+        for name, slug, category_slugs, description, price, stock in products_payload:
             product, _ = Product.objects.get_or_create(
                 slug=slug,
                 defaults={
                     "name": name,
-                    "category": category_map[category_slug],
                     "description": description,
                     "price": price,
                     "stock": stock,
@@ -155,12 +154,12 @@ class Command(BaseCommand):
             )
 
             product.name = name
-            product.category = category_map[category_slug]
             product.description = description
             product.price = price
             product.stock = stock
             product.is_active = True
             product.save()
+            product.categories.set([category_map[slug] for slug in category_slugs])
             product_map[slug] = product
 
         cart_specs = {

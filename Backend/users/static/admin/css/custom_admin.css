@@ -1,0 +1,151 @@
+:root {
+    --brand-primary: #0f766e;
+    --brand-primary-dark: #115e59;
+    --brand-accent: #f59e0b;
+    --surface-soft: #f7fafc;
+    --text-strong: #0f172a;
+    --text-muted: #475569;
+    --border-soft: #dbe4ee;
+}
+
+#header {
+    background: linear-gradient(100deg, #0f766e 0%, #0e7490 45%, #0f766e 100%);
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(15, 118, 110, 0.18);
+}
+
+#header a:link,
+#header a:visited,
+#header a {
+    color: #ffffff;
+}
+
+div.breadcrumbs {
+    background: #ecfeff;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.module,
+.inline-group {
+    border-radius: 12px;
+    border: 1px solid var(--border-soft);
+    overflow: hidden;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    background: #f1f5f9;
+    color: var(--text-strong);
+    font-weight: 700;
+}
+
+#content {
+    max-width: 1360px;
+}
+
+#content-main .object-tools a,
+.submit-row input.default {
+    border-radius: 10px;
+    background: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+#content-main .object-tools a:hover,
+.submit-row input.default:hover {
+    background: var(--brand-primary-dark);
+}
+
+.button,
+input[type="submit"],
+input[type="button"],
+.submit-row input,
+a.button {
+    border-radius: 8px;
+}
+
+.change-list table {
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.change-list tbody tr:nth-child(odd) {
+    background: #fcfdff;
+}
+
+.change-list tbody tr:hover {
+    background: #eff6ff;
+}
+
+td,
+th {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+}
+
+.form-row {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid #eef2f7;
+}
+
+.form-row:last-child {
+    border-bottom: 0;
+}
+
+.aligned label {
+    font-weight: 600;
+    color: var(--text-strong);
+}
+
+input,
+textarea,
+select,
+.vTextField,
+.vURLField,
+.vLargeTextField {
+    border-radius: 8px;
+    border: 1px solid #cfd8e3;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.12);
+}
+
+@media (max-width: 1024px) {
+    #content {
+        margin: 0 12px;
+    }
+
+    .change-list table {
+        font-size: 0.92rem;
+    }
+
+    #changelist-search input {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    #content-main .object-tools {
+        float: none;
+        margin-bottom: 10px;
+    }
+
+    #changelist-filter {
+        border-left: 0;
+        border-top: 1px solid var(--border-soft);
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+
+    .selector {
+        width: 100%;
+    }
+}

@@ -1,5 +1,5 @@
+from django.db.models import Q
 from rest_framework import generics, permissions, filters
-from django_filters.rest_framework import DjangoFilterBackend
 from .models import Category, Product
 from .serializers import CategorySerializer, ProductSerializer
 
@@ -13,13 +13,28 @@ class CategoryListView(generics.ListAPIView):
 class ProductListView(generics.ListAPIView):
     serializer_class = ProductSerializer
     permission_classes = [permissions.AllowAny]
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
-    filterset_fields = ['category']
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['name', 'description']
     ordering_fields = ['price', 'created_at']
 
     def get_queryset(self):
-        queryset = Product.objects.filter(is_active=True).select_related('category')
+        queryset = Product.objects.filter(is_active=True).prefetch_related('categories')
+
+        # Category filter accepts slugs, IDs, or a comma-separated mix.
+        category = self.request.query_params.get('category')
+        if category:
+            values = [v.strip() for v in category.split(',') if v.strip()]
+            category_ids = [int(v) for v in values if v.isdigit()]
+            category_slugs = [v for v in values if not v.isdigit()]
+
+            if category_ids and category_slugs:
+                queryset = queryset.filter(
+                    Q(categories__id__in=category_ids) | Q(categories__slug__in=category_slugs)
+                )
+            elif category_ids:
+                queryset = queryset.filter(categories__id__in=category_ids)
+            elif category_slugs:
+                queryset = queryset.filter(categories__slug__in=category_slugs)
 
         # Price range filtering
         min_price = self.request.query_params.get('min_price')
@@ -33,11 +48,11 @@ class ProductListView(generics.ListAPIView):
         if in_stock == 'true':
             queryset = queryset.filter(stock__gt=0)
 
-        return queryset
+        return queryset.distinct()
 
 
 class ProductDetailView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     permission_classes = [permissions.AllowAny]
-    queryset = Product.objects.filter(is_active=True).select_related('category')
+    queryset = Product.objects.filter(is_active=True).prefetch_related('categories')
     lookup_field = 'slug'
