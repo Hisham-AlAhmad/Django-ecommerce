@@ -1,0 +1,54 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--s-4);
+  padding: var(--s-16) var(--s-4);
+  animation: fadeUp 0.5s var(--ease-out) both;
+}
+
+.emoji {
+  font-size: 5rem;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.1));
+  animation: float 3s ease-in-out infinite;
+}
+
+.code {
+  font-size: 7rem;
+  font-family: var(--font-display);
+  color: var(--terracotta);
+  line-height: 1;
+  font-weight: 700;
+  opacity: 0.15;
+  margin-top: -1rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-family: var(--font-display);
+  color: var(--espresso);
+  margin-top: -2rem;
+}
+
+.message {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 360px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--s-3);
+}

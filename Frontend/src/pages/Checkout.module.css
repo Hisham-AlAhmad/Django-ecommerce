@@ -1,0 +1,239 @@
+.page { padding-top: var(--nav-h); }
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding-top: var(--s-10);
+  margin-bottom: var(--s-8);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color var(--dur-fast);
+}
+
+.back:hover { color: var(--terracotta); }
+
+.title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-family: var(--font-display);
+  color: var(--espresso);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--s-8);
+  align-items: start;
+  padding-bottom: var(--s-16);
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+}
+
+.section {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  padding: var(--s-6);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.sectionTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: var(--espresso);
+}
+
+/* Saved addresses */
+.addrGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.addrCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--cream);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+  position: relative;
+}
+
+.addrCard:hover { border-color: var(--terracotta); }
+
+.addrSelected {
+  border-color: var(--terracotta);
+  background: var(--terra-pale);
+}
+
+.addrCard > svg:first-child {
+  color: var(--muted);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.addrSelected > svg:first-child { color: var(--terracotta); }
+
+.addrCard span {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--mocha);
+  line-height: 1.5;
+}
+
+.addrCard strong { font-weight: 600; color: var(--espresso); }
+
+.defaultTag {
+  font-style: normal;
+  color: var(--terracotta);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.checkIcon {
+  color: var(--terracotta);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.orDivider {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+/* Form grid */
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+}
+
+.inputError { border-color: #c0392b !important; }
+
+/* Summary */
+.summary {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  padding: var(--s-6);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  position: sticky;
+  top: calc(var(--nav-h) + var(--s-4));
+}
+
+.summaryTitle {
+  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--espresso);
+}
+
+.summaryItems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.summaryItem {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: 0.875rem;
+}
+
+.summaryItemQty {
+  color: var(--muted);
+  font-size: 0.8rem;
+  min-width: 24px;
+}
+
+.summaryItemName {
+  flex: 1;
+  color: var(--mocha);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.summaryItemPrice {
+  font-weight: 600;
+  color: var(--espresso);
+}
+
+.summaryLines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  border-top: 1px solid var(--border);
+  padding-top: var(--s-4);
+}
+
+.summaryLine {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--mocha);
+}
+
+.summaryLine span:last-child { font-weight: 600; }
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--s-4);
+  border-top: 1.5px solid var(--border);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--espresso);
+}
+
+.summaryTotal span:last-child {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--terracotta);
+}
+
+.secureNote {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: 0.78rem;
+  color: var(--muted);
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .summary { position: static; order: -1; }
+}
+
+@media (max-width: 560px) {
+  .formGrid { grid-template-columns: 1fr; }
+}

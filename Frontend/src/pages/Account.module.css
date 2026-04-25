@@ -1,0 +1,203 @@
+.page { padding-top: var(--nav-h); }
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  padding-top: var(--s-10);
+  margin-bottom: var(--s-8);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  background: var(--terracotta);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-family: var(--font-display);
+  color: var(--espresso);
+}
+
+.email { color: var(--muted); font-size: 0.875rem; margin-top: 2px; }
+
+.layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--s-8);
+  align-items: start;
+  padding-bottom: var(--s-16);
+}
+
+/* Sidebar nav */
+.sidebar {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  padding: var(--s-3);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  position: sticky;
+  top: calc(var(--nav-h) + var(--s-4));
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--mocha);
+  transition: background var(--dur-fast), color var(--dur-fast);
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+}
+
+.navLink:hover { background: var(--cream); color: var(--terracotta); }
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+}
+
+.section {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  padding: var(--s-6);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  color: var(--espresso);
+}
+
+.form { display: flex; flex-direction: column; gap: var(--s-5); }
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+}
+
+/* Addresses */
+.addrForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  background: var(--cream);
+  border-radius: var(--r-lg);
+  border: 1.5px dashed var(--border);
+  animation: fadeUp 0.3s var(--ease-out) both;
+}
+
+.checkLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--mocha);
+  cursor: pointer;
+}
+
+.emptyAddr { font-size: 0.9rem; color: var(--muted); padding: var(--s-4) 0; }
+
+.addrList { display: flex; flex-direction: column; gap: var(--s-3); }
+
+.addrItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  background: var(--cream);
+  border-radius: var(--r-md);
+  flex-wrap: wrap;
+}
+
+.addrInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  font-size: 0.875rem;
+  color: var(--mocha);
+  flex: 1;
+}
+
+.addrInfo > svg { color: var(--terracotta); flex-shrink: 0; margin-top: 2px; }
+
+.defaultBadge {
+  display: inline-block;
+  margin-left: var(--s-2);
+  background: var(--sage-light);
+  color: var(--sage);
+  padding: 1px 8px;
+  border-radius: var(--r-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.addrActions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.deleteAddrBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--dur-fast), color var(--dur-fast);
+  border: none;
+}
+
+.deleteAddrBtn:hover { background: #fee2e2; color: #c0392b; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; flex-direction: row; overflow-x: auto; }
+  .navLink { white-space: nowrap; }
+  .formGrid { grid-template-columns: 1fr; }
+}

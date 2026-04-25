@@ -1,0 +1,123 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--nav-h) + var(--s-8)) var(--s-4) var(--s-8);
+  background: linear-gradient(135deg, var(--cream) 60%, var(--terra-pale) 100%);
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--white);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-xl);
+  padding: var(--s-8);
+  animation: fadeUp 0.5s var(--ease-out) both;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-3);
+  text-align: center;
+  margin-bottom: var(--s-6);
+}
+
+.logoMark {
+  width: 52px;
+  height: 52px;
+  background: var(--terracotta);
+  color: var(--white);
+  border-radius: var(--r-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(193, 87, 58, 0.35);
+}
+
+.title {
+  font-size: 1.7rem;
+  font-family: var(--font-display);
+  color: var(--espresso);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.nameGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-4);
+}
+
+.passHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.passWrap {
+  position: relative;
+}
+
+.passWrap .form-input {
+  width: 100%;
+  padding-right: 2.8rem;
+}
+
+.passToggle {
+  position: absolute;
+  right: var(--s-3);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color var(--dur-fast);
+  border-radius: var(--r-sm);
+  background: transparent;
+}
+
+.passToggle:hover { color: var(--terracotta); }
+
+.inputError {
+  border-color: #c0392b !important;
+}
+
+.switchLink {
+  text-align: center;
+  margin-top: var(--s-5);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.switchLink a {
+  color: var(--terracotta);
+  font-weight: 600;
+  transition: text-decoration var(--dur-fast);
+}
+
+.switchLink a:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .card { padding: var(--s-6); border-radius: var(--r-lg); }
+  .nameGrid { grid-template-columns: 1fr; }
+}

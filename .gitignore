@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+Frontend/public/img/
+!Frontend/public/img/.gitkeep
+node_modules
+dist
+dist-ssr
+*.local
+.htaccess
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+android/
+vendor/
+.env
+
+# Django / Python (Backend)
+# Backend/db.sqlite3
+Backend/.env
+Backend/.venv/
+Backend/venv/
+Backend/**/__pycache__/
+Backend/**/*.py[cod]
