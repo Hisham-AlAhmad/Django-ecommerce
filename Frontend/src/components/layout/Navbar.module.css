@@ -385,6 +385,9 @@
 
 /* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 768px) {
+  .actions {
+    margin-left: auto;
+  }
 
   .nav,
   .authBtns,

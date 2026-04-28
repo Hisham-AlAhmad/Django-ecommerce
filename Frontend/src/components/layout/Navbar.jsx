@@ -41,8 +41,8 @@ export default function Navbar() {
       <div className={`container ${styles.inner}`}>
         {/* Logo */}
         <Link to="/" className={styles.logo} onClick={closeMenu}>
-          <span className={styles.logoMark}>D</span>
-          <span className={styles.logoText}>DigitalHub</span>
+          <span className={styles.logoMark}>F</span>
+          <span className={styles.logoText}>Fresh Bites</span>
         </Link>
 
         {/* Desktop nav */}

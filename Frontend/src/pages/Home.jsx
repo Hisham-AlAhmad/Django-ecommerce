@@ -36,7 +36,7 @@ export default function Home() {
           <div className={styles.heroContent}>
             <span className={styles.heroBadge}>🌿 Fresh &amp; Natural</span>
             <h1 className={styles.heroTitle}>
-              Sip the <em>goodness</em>,<br />taste the joy
+              Fresh Bite <em>a day</em>,<br />keeps the sickness away!
             </h1>
             <p className={styles.heroSub}>
               Handcrafted juices, milkshakes, desserts &amp; healthy snacks —

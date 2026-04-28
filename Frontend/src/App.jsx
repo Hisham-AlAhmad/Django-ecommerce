@@ -5,6 +5,7 @@ import { CartProvider } from './context/CartContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import { PageLoader } from './components/ui/index';
+import ScrollToTop from './components/ScrollToTop';
 
 /* ── Lazy-loaded pages ───────────────────────────────────── */
 const Home         = lazy(() => import('./pages/Home'));
@@ -38,6 +39,7 @@ function Layout() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <AuthProvider>
         <CartProvider>
           <Routes>
